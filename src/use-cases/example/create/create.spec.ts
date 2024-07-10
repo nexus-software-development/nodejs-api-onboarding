@@ -11,7 +11,7 @@ describe("Create Example Use Case", () => {
     sut = new CreateExampleUseCase(exampleRepository);
   });
 
-  it("should call a method that create an example", async() => {
+  it("should call a method that create an example", async () => {
     jest.spyOn(exampleRepository, "create");
 
     const TEXT = "text";

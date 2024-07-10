@@ -1,8 +1,7 @@
-import { Module } from '@nestjs/common';
+import { Module } from "@nestjs/common";
+import { ExampleModule } from "@infra/modules/example";
 
 @Module({
-  imports: [],
-  controllers: [],
-  providers: [],
+  imports: [ExampleModule]
 })
 export class AppModule {}

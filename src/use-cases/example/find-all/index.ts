@@ -5,6 +5,6 @@ export class FindAllExampleUseCase {
   constructor(private readonly exampleRepository: ExampleRepository) {}
 
   async findAll(): Promise<Example[]> {
-    return this.exampleRepository.findAll()
+    return this.exampleRepository.findAll();
   }
 }
