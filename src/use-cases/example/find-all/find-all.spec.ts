@@ -12,7 +12,7 @@ describe("Hello World Example Use Case", () => {
     sut = new FindAllExampleUseCase(exampleRepository);
   });
 
-  const EXAMPLE = { id: "123", text: "Texto" } as Example;
+  const EXAMPLE = { id: 123, text: "Texto" } as Example;
   const EXAMPLES = [EXAMPLE, EXAMPLE, EXAMPLE];
 
   it("should call a method that return a list of examples", async () => {
@@ -20,6 +20,6 @@ describe("Hello World Example Use Case", () => {
 
     const result = await sut.findAll();
 
-    expect(result).toStrictEqual(EXAMPLES);
+    expect(result).toStrictEqual({ examples: EXAMPLES });
   });
 });
