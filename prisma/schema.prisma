@@ -12,3 +12,38 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  name      String
+  password  String
+  roleValue String    @map("role_value")
+  role      Role      @relation(fields: [roleValue], references: [value])
+  products  Product[]
+
+  @@map("users")
+}
+
+model Role {
+  value       String   @id @unique
+  label       String
+  description String
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+  users       User[]
+
+  @@map("roles")
+}
+
+model Product {
+  id        Int      @id @default(autoincrement())
+  name      String
+  price     Float
+  sellerId  Int      @map("owner_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  seller    User     @relation(fields: [sellerId], references: [id])
+
+  @@map("products")
+}
