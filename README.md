@@ -1,73 +1,29 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# NodeJS API Onboarding
+Eu preparei esse projeto para facilitar o processo de começar a mexer nos nossos projetos. Basicamente, a ideia desse onboarding é criar um cenário onde você vai conseguir passar por todos os processos da nossa API para facilitar quando for necessário desenvolver soluções reais.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Como fazer?
+Eu deixei um exemplo dentro do código para ser mais fácil de resolver o desáfio. Para concluir o desafio é necessario ter aberto uma PR seguindo exemplo, {nome}-todo-{dia}-{mes} so para ficar mais organizado as branchs.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+`exemplo: joaovitorlima-todo-11-07`
 
-## Description
+Outro ponto é que para a conclusão do desafio é necessário ter a rota documentada no Swagger.
+## Pré-requisitos:
+Para evitarmos ter documentação repetida, eu aconselho ler a nossa documentação que está no Notion. Acho legal ler sobre a nossa arquitetura, SOLID, como rodar a primeira vez e os scripts. Qualquer dúvida, pode entrar em contato com o dev envolvido.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Desafio
+O desafio vai ser o bom e velho aplicativo de afazeres. Onde vamos ter uma lista para adicionarmos o que temos que fazer, marcar como concluído e vermos a nossa lista de afazeres. Agora, que você já sabe o que deve ser feito, vou escrever os casos de uso.
 
-## Installation
+Lembrando que estamos só desenvolvendo a parte do BE. Não é necessário nenhuma UI, e sim as rotas no Swagger para testarmos.
 
-```bash
-$ pnpm install
-```
+### Caso de uso: Criar um item a fazer
+1. Eu, como usuário, devo conseguir criar um item para a nossa lista de afazeres.
+2. Para a criação desse item vai ser necessário somente o texto.
+3. Ele vai ser criado como se ele não tivesse sido concluído por padrão.
 
-## Running the app
-
-```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+### Caso de uso: Ver todos os afazeres
+1. Eu, como usuário, devo ver todos os meus afazeres.
+2. Eu quero ver quando o meu item foi criado, se ele já foi feito ou não e qual o texto dele.
+3. Devo poder filtrar pelo texto.
+### Caso de uso: Marcar como feito
+1. Eu, como usuário, devo poder marcar como feito um dos meus ToDos.
+2. Assim que feito, ele deve aparecer como concluído dentro da rota de ver todos.
