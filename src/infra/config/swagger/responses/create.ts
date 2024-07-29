@@ -5,4 +5,10 @@ export const CreateExampleResponse = applyDecorators(
   ApiCreatedResponse({
     description: "Exemplo criado com sucesso!"
   })
-)
+);
+
+export const CreateTodoResponse = applyDecorators(
+  ApiCreatedResponse({
+    description: "Tarefa criada com sucesso!"
+  })
+);
