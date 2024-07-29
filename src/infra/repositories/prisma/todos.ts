@@ -20,4 +20,15 @@ export class PrismaTodoRepository implements TodoRepository {
   async findAll(): Promise<Todo[]> {
     return this.prisma.todo.findMany();
   }
+
+  async findByText(text: string): Promise<Todo[]> {
+    return this.prisma.todo.findMany({
+      where: {
+        text: {
+          contains: text,
+          mode: "insensitive"
+        }
+      }
+    });
+  }
 }
