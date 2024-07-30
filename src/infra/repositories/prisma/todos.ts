@@ -31,4 +31,16 @@ export class PrismaTodoRepository implements TodoRepository {
       }
     });
   }
+
+  async setDone(id: string): Promise<void> {
+    await this.prisma.todo.update({
+      where: {
+        id: Number(id)
+      },
+      data: {
+        itsDone: true
+      }
+    });
+    return;
+  }
 }
