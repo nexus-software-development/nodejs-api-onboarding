@@ -6,24 +6,19 @@ const EXAMPLE: Example = {
   id: 1,
   text: "Texto",
   createdAt: new Date(),
-  updatedAt: new Date(),
-}
+  updatedAt: new Date()
+};
 
 export class ExampleReturnDto {
   @ApiProperty({
-    example: [
-      EXAMPLE,
-      EXAMPLE,
-    ]
+    example: [EXAMPLE, EXAMPLE]
   })
-  examples: Example[]
+  examples: Example[];
 }
 
 export const FindAllExampleResponses = applyDecorators(
-  ApiOkResponse(
-    {
-      description: "Todas os exemplos foram encontrados",
-      type: ExampleReturnDto
-    }
-  )
-)
+  ApiOkResponse({
+    description: "Todas os exemplos foram encontrados",
+    type: ExampleReturnDto
+  })
+);

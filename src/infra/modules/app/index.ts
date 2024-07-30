@@ -4,4 +4,4 @@ import { ExampleModule } from "@infra/modules/example";
 @Module({
   imports: [ExampleModule]
 })
-export class AppModule { }
+export class AppModule {}

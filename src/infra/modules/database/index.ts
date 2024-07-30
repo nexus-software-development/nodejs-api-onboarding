@@ -18,4 +18,4 @@ import { Prisma } from "@infra/config/prisma";
     }
   ]
 })
-export class DatabaseModule { }
+export class DatabaseModule {}

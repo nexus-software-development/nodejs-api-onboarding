@@ -4,11 +4,11 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class FindAllExampleUseCase {
-  constructor(private readonly exampleRepository: ExampleRepository) { }
+  constructor(private readonly exampleRepository: ExampleRepository) {}
 
   async findAll(): Promise<{ examples: Example[] }> {
     const examples = await this.exampleRepository.findAll();
 
-    return { examples }
+    return { examples };
   }
 }

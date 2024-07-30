@@ -9,4 +9,4 @@ import { ExampleController } from "@infra/controllers/example";
   controllers: [ExampleController],
   providers: [FindAllExampleUseCase, CreateExampleUseCase]
 })
-export class ExampleModule { }
+export class ExampleModule {}

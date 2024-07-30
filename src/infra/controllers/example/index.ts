@@ -13,7 +13,7 @@ export class ExampleController {
   constructor(
     private readonly createExampleUseCase: CreateExampleUseCase,
     private readonly findAllExampleUseCase: FindAllExampleUseCase
-  ) { }
+  ) {}
 
   @Post()
   @CreateExampleResponse
