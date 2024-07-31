@@ -14,8 +14,10 @@ describe("Change Task Check UseCase", () => {
   it("should call a method that changes task check", async () => {
     jest.spyOn(taskRepository, "changeTaskCheck");
 
-    await sut.changeTaskCheck();
+    const ID: number = 123435;
 
-    expect(taskRepository.changeTaskCheck).toHaveBeenCalled();
+    await sut.changeTaskCheck(ID);
+
+    expect(taskRepository.changeTaskCheck).toHaveBeenCalledWith(ID);
   });
 });

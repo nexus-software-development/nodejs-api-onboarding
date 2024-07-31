@@ -5,7 +5,7 @@ import { Injectable } from "@nestjs/common";
 export class ChangeTaskCheckUseCase {
   constructor(private readonly taskRepository: TaskRepository) {}
 
-  async changeTaskCheck(): Promise<void> {
-    return this.taskRepository.changeTaskCheck();
+  async changeTaskCheck(id: number): Promise<void> {
+    return this.taskRepository.changeTaskCheck(id);
   }
 }

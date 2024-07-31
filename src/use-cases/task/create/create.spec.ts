@@ -1,5 +1,5 @@
 import { TaskRepository } from "@domain/repositories/task";
-import { TaskRepositoryStub } from "../../../../tests/stubs/repositories/task";
+import { TaskRepositoryStub } from "@test/stubs/repositories/task";
 import { CreateTaskUseCase } from ".";
 
 describe("Create Task UseCase", () => {
@@ -13,10 +13,10 @@ describe("Create Task UseCase", () => {
 
   it("should call a method that create an task", async () => {
     jest.spyOn(taskRepository, "create");
-    const textParam: string = "TestingText";
+    const TEXT: string = "TestingText";
 
-    await sut.create(textParam);
+    await sut.create(TEXT);
 
-    expect(taskRepository.create).toHaveBeenCalledWith(textParam);
+    expect(taskRepository.create).toHaveBeenCalledWith(TEXT);
   });
 });
