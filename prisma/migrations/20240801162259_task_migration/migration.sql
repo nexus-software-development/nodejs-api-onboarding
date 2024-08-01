@@ -8,3 +8,9 @@ CREATE TABLE "tasks" (
 
     CONSTRAINT "tasks_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "tasks_text_key" ON "tasks"("text");
+
+-- CreateIndex
+CREATE INDEX "tasks_text_idx" ON "tasks"("text");

@@ -20,7 +20,11 @@ export class PrismaTaskRepository implements TaskRepository {
 
     await this.prisma.task.update({
       where: { id },
-      data: { isChecked: !task.isChecked, updatedAt: new Date() }
+      data: { isChecked: !task.isChecked }
     });
+  }
+
+  async findByText(text: string): Promise<Task | null> {
+    return await this.prisma.task.findUnique({ where: { text } });
   }
 }

@@ -13,4 +13,8 @@ export class TaskRepositoryStub implements TaskRepository {
   async changeTaskCheck(): Promise<void> {
     return;
   }
+
+  async findByText(): Promise<Task | null> {
+    return;
+  }
 }

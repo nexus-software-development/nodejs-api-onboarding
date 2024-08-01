@@ -24,10 +24,11 @@ model Example {
 
 model Task {
   id Int  @id @default(autoincrement())
-  text String
+  text String @unique
   isChecked Boolean @default(false) @map("is_checked")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
 
   @@map("tasks")
+  @@index([text])
 }
