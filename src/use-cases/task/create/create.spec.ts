@@ -23,14 +23,14 @@ describe("Create Task UseCase", () => {
     expect(taskRepository.create).toHaveBeenCalledWith(TEXT);
   });
 
-  it("should throw ConflictException if task with the same text already exists", async () => {
+  it("should throw a ConflictException when a task with the same text already exists", async () => {
     const TASK = {
-      id: "0t1b2i3",
+      id: 54321,
       text: TEXT
-    } as unknown as Task;
+    } as Task;
 
     jest.spyOn(taskRepository, "findByText").mockResolvedValue(TASK);
 
-    await expect(sut.create(TEXT)).rejects.toThrow(ConflictException); //Or: "Já existe uma Tarefa como essa"
+    await expect(sut.create(TEXT)).rejects.toThrow(ConflictException);
   });
 });

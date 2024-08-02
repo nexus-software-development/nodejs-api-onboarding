@@ -13,9 +13,9 @@ describe("Find All Tasks UseCase", () => {
   });
 
   const TASK = {
-    id: "0t1b2i3",
+    id: 98231,
     text: "TEXT"
-  } as unknown as Task;
+  } as Task;
 
   const tasks: Task[] = [TASK, TASK, TASK, TASK];
 

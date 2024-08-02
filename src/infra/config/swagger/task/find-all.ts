@@ -5,9 +5,9 @@ import { ApiOkResponse, ApiProperty } from "@nestjs/swagger";
 const TASK: Task = {
   id: 1021821,
   text: "Texto"
-} as unknown as Task;
+} as Task;
 
-export class TasksReturnDto {
+export class FindAllTasksResponseDto {
   @ApiProperty({
     example: [TASK, TASK]
   })
@@ -17,6 +17,6 @@ export class TasksReturnDto {
 export const FindAllTasksResponse = applyDecorators(
   ApiOkResponse({
     description: "Todas as suas tarefas foram encontrados!",
-    type: TasksReturnDto
+    type: FindAllTasksResponseDto
   })
 );

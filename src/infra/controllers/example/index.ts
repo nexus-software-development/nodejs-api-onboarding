@@ -3,8 +3,6 @@ import { CreateExampleUseCase } from "@use-cases/example/create";
 import { FindAllExampleUseCase } from "@use-cases/example/find-all";
 import { CreateExampleDto } from "./dtos/create-example";
 import { Example } from "@prisma/client";
-
-//Swagger
 import { ApiTags } from "@nestjs/swagger";
 import { FindAllExampleResponses } from "@infra/config/swagger/example/responses/find-all";
 import { CreateExampleResponse } from "@infra/config/swagger/example/responses/create";

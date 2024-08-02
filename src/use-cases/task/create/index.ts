@@ -6,7 +6,9 @@ export class CreateTaskUseCase {
   constructor(private readonly taskRepository: TaskRepository) {}
 
   async create(text: string): Promise<void> {
-    if (await this.taskRepository.findByText(text)) {
+    const existsText = await this.taskRepository.findByText(text);
+
+    if (existsText) {
       throw new ConflictException("Já existe uma Tarefa como essa");
     }
 
