@@ -27,4 +27,8 @@ export class PrismaTaskRepository implements TaskRepository {
   async findByText(text: string): Promise<Task | null> {
     return await this.prisma.task.findUnique({ where: { text } });
   }
+
+  async deleteTask(id: number): Promise<void> {
+    await this.prisma.task.delete({ where: { id } });
+  }
 }

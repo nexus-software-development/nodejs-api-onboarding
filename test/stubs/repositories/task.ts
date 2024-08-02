@@ -17,4 +17,8 @@ export class TaskRepositoryStub implements TaskRepository {
   async findByText(): Promise<Task | null> {
     return;
   }
+
+  async deleteTask(): Promise<void> {
+    return;
+  }
 }
