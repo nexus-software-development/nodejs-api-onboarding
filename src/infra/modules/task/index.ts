@@ -5,6 +5,7 @@ import { CreateTaskUseCase } from "@use-cases/task/create";
 import { FindAllTaskUseCase } from "@use-cases/task/find-all";
 import { ChangeTaskCheckUseCase } from "@use-cases/task/change-task-check";
 import { DeleteTaskUseCase } from "@use-cases/task/delete-task";
+import { ValidateTaskIdUseCase } from "@use-cases/task/validate-task-id";
 
 @Module({
   imports: [DatabaseModule],
@@ -13,7 +14,8 @@ import { DeleteTaskUseCase } from "@use-cases/task/delete-task";
     CreateTaskUseCase,
     FindAllTaskUseCase,
     ChangeTaskCheckUseCase,
-    DeleteTaskUseCase
+    DeleteTaskUseCase,
+    ValidateTaskIdUseCase
   ]
 })
 export class TaskModule {}

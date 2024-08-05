@@ -44,12 +44,12 @@ export class TaskController {
   @Patch(":id")
   @ChangeTaskCheckResponse
   changeTaskCheck(@Param("id") id: string): Promise<void> {
-    return this.changeTaskCheckUseCase.changeTaskCheck(Number(id));
+    return this.changeTaskCheckUseCase.changeTaskCheck(id);
   }
 
   @Delete(":id")
   @DeleteTaskResponse
   deleteTask(@Param("id") id: string): Promise<void> {
-    return this.deleteTaskUseCase.deleteTask(Number(id));
+    return this.deleteTaskUseCase.deleteTask(id);
   }
 }

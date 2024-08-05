@@ -1,23 +1,28 @@
 import { TaskRepository } from "@domain/repositories/task";
 import { TaskRepositoryStub } from "@test/stubs/repositories/task";
 import { ChangeTaskCheckUseCase } from ".";
+import { ValidateTaskIdUseCase } from "../validate-task-id";
 
 describe("Change Task Check UseCase", () => {
   let sut: ChangeTaskCheckUseCase;
   let taskRepository: TaskRepository;
+  let validateTaskId: ValidateTaskIdUseCase;
 
   beforeEach(() => {
     taskRepository = new TaskRepositoryStub();
-    sut = new ChangeTaskCheckUseCase(taskRepository);
+    validateTaskId = new ValidateTaskIdUseCase();
+    sut = new ChangeTaskCheckUseCase(taskRepository, validateTaskId);
   });
 
   it("should call a method that changes task check", async () => {
     jest.spyOn(taskRepository, "changeTaskCheck");
 
-    const ID: number = 123435;
+    const ID: string = "123435";
 
     await sut.changeTaskCheck(ID);
 
-    expect(taskRepository.changeTaskCheck).toHaveBeenCalledWith(ID);
+    const ID_NUMBER: number = Number(ID);
+
+    expect(taskRepository.changeTaskCheck).toHaveBeenCalledWith(ID_NUMBER);
   });
 });

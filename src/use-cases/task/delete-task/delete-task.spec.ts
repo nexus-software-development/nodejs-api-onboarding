@@ -1,22 +1,27 @@
 import { TaskRepositoryStub } from "@test/stubs/repositories/task";
 import { DeleteTaskUseCase } from ".";
+import { ValidateTaskIdUseCase } from "../validate-task-id";
 
 describe("Delete Task UseCase", () => {
   let sut: DeleteTaskUseCase;
+  let validateTaskId: ValidateTaskIdUseCase;
   let taskRepository: TaskRepositoryStub;
 
   beforeEach(() => {
     taskRepository = new TaskRepositoryStub();
-    sut = new DeleteTaskUseCase(taskRepository);
+    validateTaskId = new ValidateTaskIdUseCase();
+    sut = new DeleteTaskUseCase(taskRepository, validateTaskId);
   });
 
   it("should call a method that delete an task", async () => {
     jest.spyOn(taskRepository, "deleteTask");
 
-    const ID: number = 97531;
+    const ID: string = "97531";
 
     await sut.deleteTask(ID);
 
-    expect(taskRepository.deleteTask).toHaveBeenCalledWith(ID);
+    const ID_NUMBER = Number(ID);
+
+    expect(taskRepository.deleteTask).toHaveBeenCalledWith(ID_NUMBER);
   });
 });
