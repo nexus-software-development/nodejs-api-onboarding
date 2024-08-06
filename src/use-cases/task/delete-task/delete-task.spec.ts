@@ -15,6 +15,7 @@ describe("Delete Task UseCase", () => {
 
   it("should call a method that delete an task", async () => {
     jest.spyOn(taskRepository, "deleteTask");
+    jest.spyOn(validateTaskId, "validate");
 
     const ID: string = "97531";
 
@@ -22,6 +23,7 @@ describe("Delete Task UseCase", () => {
 
     const ID_NUMBER = Number(ID);
 
+    expect(validateTaskId.validate).toHaveBeenLastCalledWith(ID);
     expect(taskRepository.deleteTask).toHaveBeenCalledWith(ID_NUMBER);
   });
 });
