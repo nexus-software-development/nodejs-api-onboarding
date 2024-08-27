@@ -1,6 +1,7 @@
 import { ToDoRepository } from "@application/repositories/to-do";
 import { MarkToDoAsCompletedUseCase } from ".";
 import { ToDoRepositoryStub } from "@test/stubs/repositories/to-do";
+import { ToDo } from "@domain/entities/to-do";
 
 describe("Mark ToDo As Completed Use Case", () => {
   let sut: MarkToDoAsCompletedUseCase;
@@ -23,5 +24,26 @@ describe("Mark ToDo As Completed Use Case", () => {
 
     await expect(promise).rejects.toThrow('No ToDo was found with ID "1".');
     expect(toDoRepository.findOne).toHaveBeenNthCalledWith(1, 1);
+  });
+
+  it("should call repository .save method", async () => {
+    const toDo: ToDo = {
+      id: 1,
+      isCompleted: false,
+      text: "Random text",
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+
+    jest.spyOn(toDoRepository, "findOne").mockResolvedValueOnce(toDo);
+    jest.spyOn(toDoRepository, "save");
+
+    await sut.markToDoAsCompleted(toDo.id);
+
+    expect(toDoRepository.findOne).toHaveBeenNthCalledWith(1, toDo.id);
+    expect(toDoRepository.save).toHaveBeenNthCalledWith(1, {
+      ...toDo,
+      isCompleted: true
+    });
   });
 });
