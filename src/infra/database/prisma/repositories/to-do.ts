@@ -30,4 +30,25 @@ export class PrismaToDoRepository implements ToDoRepository {
 
     return toDos.map(PrismaToDoMapper.toDomain);
   }
+
+  async findOne(id: number): Promise<ToDo | null> {
+    const toDo = await this.prismaService.toDo.findUnique({
+      where: {
+        id
+      }
+    });
+
+    if (!toDo) return null;
+
+    return PrismaToDoMapper.toDomain(toDo);
+  }
+
+  async save(toDo: ToDo): Promise<void> {
+    await this.prismaService.toDo.update({
+      where: {
+        id: toDo.id
+      },
+      data: toDo
+    });
+  }
 }
