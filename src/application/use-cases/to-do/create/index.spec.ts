@@ -1,6 +1,17 @@
 import { ToDoRepository } from "@application/repositories/to-do";
 import { CreateToDoUseCase } from ".";
 import { ToDoRepositoryStub } from "@test/stubs/repositories/to-do";
+import { ToDo } from "@domain/entities/to-do";
+
+function makeToDo(toDo?: Partial<ToDo>): ToDo {
+  return {
+    id: toDo?.id ?? Math.random(),
+    isCompleted: toDo?.isCompleted ?? false,
+    text: toDo?.text ?? "Random text",
+    createdAt: toDo?.createdAt ?? new Date(),
+    updatedAt: toDo?.updatedAt ?? new Date()
+  };
+}
 
 describe("Create ToDo Use Case", () => {
   let sut: CreateToDoUseCase;
@@ -16,7 +27,24 @@ describe("Create ToDo Use Case", () => {
     expect(toDoRepository).toBeDefined();
   });
 
+  it("should throw if given text has already been used for another ToDo", async () => {
+    const mockedToDo = makeToDo();
+
+    jest.spyOn(toDoRepository, "findByText").mockResolvedValueOnce(mockedToDo);
+
+    const promise = sut.create(mockedToDo.text);
+
+    await expect(promise).rejects.toThrow(
+      "A ToDo has already been created with given text."
+    );
+    expect(toDoRepository.findByText).toHaveBeenNthCalledWith(
+      1,
+      mockedToDo.text
+    );
+  });
+
   it("should call repository .create method", async () => {
+    jest.spyOn(toDoRepository, "findByText").mockResolvedValueOnce(null);
     jest.spyOn(toDoRepository, "create");
 
     const text = "Just a random text";

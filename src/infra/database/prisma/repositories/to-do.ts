@@ -31,6 +31,18 @@ export class PrismaToDoRepository implements ToDoRepository {
     return toDos.map(PrismaToDoMapper.toDomain);
   }
 
+  async findByText(text: string): Promise<ToDo | null> {
+    const toDo = await this.prismaService.toDo.findUnique({
+      where: {
+        text
+      }
+    });
+
+    if (!toDo) return null;
+
+    return PrismaToDoMapper.toDomain(toDo);
+  }
+
   async findOne(id: number): Promise<ToDo | null> {
     const toDo = await this.prismaService.toDo.findUnique({
       where: {

@@ -10,6 +10,16 @@ export class ToDoRepositoryStub implements ToDoRepository {
     return [];
   }
 
+  async findByText(text: string): Promise<ToDo | null> {
+    return {
+      id: Math.random(),
+      text,
+      isCompleted: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+  }
+
   async findOne(id: number): Promise<ToDo | null> {
     return {
       id,
