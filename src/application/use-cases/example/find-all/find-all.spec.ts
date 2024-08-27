@@ -1,7 +1,7 @@
 import { ExampleRepository } from "@application/repositories/example";
 import { FindAllExampleUseCase } from ".";
 import { ExampleRepositoryStub } from "@test/stubs/repositories/example";
-import { Example } from "@domain/entities/example";
+import { makeExample } from "@test/factories/entities/example";
 
 describe("Hello World Example Use Case", () => {
   let sut: FindAllExampleUseCase;
@@ -12,14 +12,13 @@ describe("Hello World Example Use Case", () => {
     sut = new FindAllExampleUseCase(exampleRepository);
   });
 
-  const EXAMPLE = { id: 123, text: "Texto" } as Example;
-  const EXAMPLES = [EXAMPLE, EXAMPLE, EXAMPLE];
-
   it("should call a method that return a list of examples", async () => {
-    jest.spyOn(exampleRepository, "findAll").mockResolvedValue(EXAMPLES);
+    const mockedExamples = [makeExample(), makeExample(), makeExample()];
+
+    jest.spyOn(exampleRepository, "findAll").mockResolvedValue(mockedExamples);
 
     const result = await sut.findAll();
 
-    expect(result).toStrictEqual({ examples: EXAMPLES });
+    expect(result).toStrictEqual({ examples: mockedExamples });
   });
 });

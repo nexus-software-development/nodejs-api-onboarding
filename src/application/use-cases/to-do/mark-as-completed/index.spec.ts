@@ -1,7 +1,7 @@
 import { ToDoRepository } from "@application/repositories/to-do";
 import { MarkToDoAsCompletedUseCase } from ".";
 import { ToDoRepositoryStub } from "@test/stubs/repositories/to-do";
-import { ToDo } from "@domain/entities/to-do";
+import { makeToDo } from "@test/factories/entities/to-do";
 
 describe("Mark ToDo As Completed Use Case", () => {
   let sut: MarkToDoAsCompletedUseCase;
@@ -27,13 +27,7 @@ describe("Mark ToDo As Completed Use Case", () => {
   });
 
   it("should call repository .save method", async () => {
-    const toDo: ToDo = {
-      id: 1,
-      isCompleted: false,
-      text: "Random text",
-      createdAt: new Date(),
-      updatedAt: new Date()
-    };
+    const toDo = makeToDo();
 
     jest.spyOn(toDoRepository, "findOne").mockResolvedValueOnce(toDo);
     jest.spyOn(toDoRepository, "save");

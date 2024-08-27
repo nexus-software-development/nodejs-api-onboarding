@@ -1,17 +1,7 @@
 import { ToDoRepository } from "@application/repositories/to-do";
 import { FindAllToDosUseCase } from ".";
 import { ToDoRepositoryStub } from "@test/stubs/repositories/to-do";
-import { ToDo } from "@domain/entities/to-do";
-
-function makeToDo(toDo?: Partial<ToDo>): ToDo {
-  return {
-    id: toDo?.id ?? Math.random(),
-    isCompleted: toDo?.isCompleted ?? false,
-    text: toDo?.text ?? "Random text",
-    createdAt: toDo?.createdAt ?? new Date(),
-    updatedAt: toDo?.updatedAt ?? new Date()
-  };
-}
+import { makeToDo } from "@test/factories/entities/to-do";
 
 describe("FindAll ToDos Use Case", () => {
   let sut: FindAllToDosUseCase;
