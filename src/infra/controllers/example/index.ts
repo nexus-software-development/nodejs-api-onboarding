@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
-import { CreateExampleUseCase } from "@use-cases/example/create";
-import { FindAllExampleUseCase } from "@use-cases/example/find-all";
+import { CreateExampleUseCase } from "@application/use-cases/example/create";
+import { FindAllExampleUseCase } from "@application/use-cases/example/find-all";
 import { CreateExampleDto } from "./dtos/create-example";
 import { Example } from "@prisma/client";
 import { FindAllExampleResponses } from "@infra/config/swagger/responses/find-all";

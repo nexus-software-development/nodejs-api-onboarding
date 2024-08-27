@@ -1,4 +1,4 @@
-import { ExampleRepository } from "@domain/repositories/example";
+import { ExampleRepository } from "@application/repositories/example";
 import { ExampleRepositoryStub } from "@test/stubs/repositories/example";
 import { CreateExampleUseCase } from ".";
 

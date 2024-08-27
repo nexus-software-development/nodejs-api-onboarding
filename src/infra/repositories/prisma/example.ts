@@ -1,5 +1,5 @@
 import { Example } from "@domain/entities/example";
-import { ExampleRepository } from "@domain/repositories/example";
+import { ExampleRepository } from "@application/repositories/example";
 import { Prisma } from "@infra/config/prisma";
 import { Injectable } from "@nestjs/common";
 
