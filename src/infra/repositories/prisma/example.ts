@@ -1,14 +1,14 @@
 import { Example } from "@domain/entities/example";
 import { ExampleRepository } from "@application/repositories/example";
-import { Prisma } from "@infra/config/prisma";
 import { Injectable } from "@nestjs/common";
+import { PrismaService } from "@infra/database/prisma/prisma.service";
 
 @Injectable()
 export class PrismaExampleRepository implements ExampleRepository {
-  constructor(private readonly prisma: Prisma) {}
+  constructor(private readonly prismaService: PrismaService) {}
 
   async create(text: string): Promise<void> {
-    await this.prisma.example.create({
+    await this.prismaService.example.create({
       data: {
         text
       }
@@ -18,6 +18,6 @@ export class PrismaExampleRepository implements ExampleRepository {
   }
 
   async findAll(): Promise<Example[]> {
-    return this.prisma.example.findMany();
+    return this.prismaService.example.findMany();
   }
 }
