@@ -12,7 +12,7 @@ export class PrismaToDoRepository implements ToDoRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
   async create(text: string): Promise<void> {
-    await this.prismaService.example.create({
+    await this.prismaService.toDo.create({
       data: {
         text
       }
@@ -20,7 +20,7 @@ export class PrismaToDoRepository implements ToDoRepository {
   }
 
   async findAll(options: FindAllToDosOptions): Promise<ToDo[]> {
-    const toDos = await this.prismaService.example.findMany({
+    const toDos = await this.prismaService.toDo.findMany({
       where: {
         text: options?.where.text
       }
@@ -37,6 +37,8 @@ export class PrismaToDoRepository implements ToDoRepository {
         text
       }
     });
+
+    console.log(toDo);
 
     if (!toDo) return null;
 
