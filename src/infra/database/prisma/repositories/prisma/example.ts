@@ -13,8 +13,6 @@ export class PrismaExampleRepository implements ExampleRepository {
         text
       }
     });
-
-    return;
   }
 
   async findAll(): Promise<Example[]> {
