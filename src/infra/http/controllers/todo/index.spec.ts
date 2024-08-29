@@ -73,4 +73,17 @@ describe("ToDo Controller", () => {
       expect(createToDoUseCase.create).toHaveBeenCalledWith("My ToDo");
     });
   });
+
+  describe("X GET /todo", () => {
+    it("should return an empty array if no ToDos were found", async () => {
+      jest.spyOn(findAllToDosUseCase, "findAll").mockResolvedValueOnce({
+        toDos: []
+      });
+
+      const { toDos } = await controller.findAll();
+
+      expect(findAllToDosUseCase.findAll).toHaveBeenCalledWith(undefined);
+      expect(toDos).toEqual([]);
+    });
+  });
 });
