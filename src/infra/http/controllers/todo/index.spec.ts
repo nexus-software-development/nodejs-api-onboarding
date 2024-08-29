@@ -53,7 +53,7 @@ describe("ToDo Controller", () => {
   });
 
   describe("X POST /todo", () => {
-    it.only("should throw a ConflictException if a ToDo already exists with given text", async () => {
+    it("should throw a ConflictException if a ToDo already exists with given text", async () => {
       const msg = "A ToDo has already been created with given text.";
 
       jest
@@ -64,6 +64,12 @@ describe("ToDo Controller", () => {
 
       await expect(promise).rejects.toBeInstanceOf(ConflictException);
       await expect(promise).rejects.toThrow(msg);
+      expect(createToDoUseCase.create).toHaveBeenCalledWith("My ToDo");
+    });
+
+    it("should call use case with correct arguments", async () => {
+      await controller.create({ text: "My ToDo" });
+
       expect(createToDoUseCase.create).toHaveBeenCalledWith("My ToDo");
     });
   });
