@@ -3,7 +3,7 @@ import { CreateToDoUseCase } from "@application/use-cases/to-do/create";
 import { FindAllToDosUseCase } from "@application/use-cases/to-do/find-all";
 import { MarkToDoAsCompletedUseCase } from "@application/use-cases/to-do/mark-as-completed";
 import { ToDoController } from ".";
-import { ConflictException } from "@nestjs/common";
+import { ConflictException, NotFoundException } from "@nestjs/common";
 import { ToDo } from "@domain/entities/to-do";
 import { faker } from "@faker-js/faker";
 
@@ -114,6 +114,25 @@ describe("ToDo Controller", () => {
 
       expect(findAllToDosUseCase.findAll).toHaveBeenCalledWith(undefined);
       expect(toDos).toStrictEqual(mockedToDos);
+    });
+  });
+
+  describe("X PATCH /todo/:id", () => {
+    it("should throw a NotFoundException if no ToDo is found with given id", async () => {
+      const id = 123;
+      const msg = `No ToDo was found with ID "${id}".`;
+
+      jest
+        .spyOn(markToDoAsCompletedUseCase, "markToDoAsCompleted")
+        .mockRejectedValueOnce(new NotFoundException(msg));
+
+      const promise = controller.markToDoAsCompleted(id);
+
+      await expect(promise).rejects.toBeInstanceOf(NotFoundException);
+      await expect(promise).rejects.toThrow(msg);
+      expect(
+        markToDoAsCompletedUseCase.markToDoAsCompleted
+      ).toHaveBeenCalledWith(id);
     });
   });
 });
