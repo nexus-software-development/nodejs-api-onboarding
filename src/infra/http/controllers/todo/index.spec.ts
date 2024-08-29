@@ -134,5 +134,15 @@ describe("ToDo Controller", () => {
         markToDoAsCompletedUseCase.markToDoAsCompleted
       ).toHaveBeenCalledWith(id);
     });
+
+    it("should mark a ToDo as completed", async () => {
+      const id = 456;
+
+      await controller.markToDoAsCompleted(id);
+
+      expect(
+        markToDoAsCompletedUseCase.markToDoAsCompleted
+      ).toHaveBeenCalledWith(id);
+    });
   });
 });
