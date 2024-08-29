@@ -4,6 +4,18 @@ import { FindAllToDosUseCase } from "@application/use-cases/to-do/find-all";
 import { MarkToDoAsCompletedUseCase } from "@application/use-cases/to-do/mark-as-completed";
 import { ToDoController } from ".";
 import { ConflictException } from "@nestjs/common";
+import { ToDo } from "@domain/entities/to-do";
+import { faker } from "@faker-js/faker";
+
+function makeToDo(props?: Partial<ToDo>): ToDo {
+  return {
+    id: props?.id ?? faker.number.int(),
+    text: props?.text ?? faker.lorem.text(),
+    isCompleted: props?.isCompleted ?? faker.datatype.boolean(),
+    createdAt: props?.createdAt ?? new Date(),
+    updatedAt: props?.updatedAt ?? faker.date.future()
+  };
+}
 
 describe("ToDo Controller", () => {
   let createToDoUseCase: CreateToDoUseCase;
@@ -84,6 +96,24 @@ describe("ToDo Controller", () => {
 
       expect(findAllToDosUseCase.findAll).toHaveBeenCalledWith(undefined);
       expect(toDos).toEqual([]);
+    });
+
+    it("should return all ToDos previously created", async () => {
+      const mockedToDos: ToDo[] = [
+        makeToDo(),
+        makeToDo(),
+        makeToDo(),
+        makeToDo()
+      ];
+
+      jest.spyOn(findAllToDosUseCase, "findAll").mockResolvedValueOnce({
+        toDos: mockedToDos
+      });
+
+      const { toDos } = await controller.findAll();
+
+      expect(findAllToDosUseCase.findAll).toHaveBeenCalledWith(undefined);
+      expect(toDos).toStrictEqual(mockedToDos);
     });
   });
 });
