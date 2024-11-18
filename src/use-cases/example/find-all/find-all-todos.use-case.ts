@@ -6,7 +6,11 @@ import { Injectable } from "@nestjs/common";
 export class FindAllToDosUseCase {
   constructor(private toDoRepository: ToDoRepository) {}
 
-  async execute(): Promise<ToDo[]> {
+  async execute(filterText?: string): Promise<ToDo[]> {
+    if (filterText) {
+      return this.toDoRepository.findByText(filterText);
+    }
+
     return this.toDoRepository.findAll();
   }
 }

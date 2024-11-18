@@ -21,11 +21,22 @@ export class PrismaToDoRepository implements ToDoRepository {
     };
   }
 
-  findAll(): Promise<ToDo[]> {
+  async findAll(): Promise<ToDo[]> {
     return this.prisma.toDo.findMany();
   }
 
-  findById(id: number): Promise<ToDo | null> {
+  async findByText(text: string): Promise<ToDo[]> {
+    return this.prisma.toDo.findMany({
+      where: {
+        text: {
+          contains: text,
+          mode: "insensitive"
+        }
+      }
+    });
+  }
+
+  async findById(id: number): Promise<ToDo | null> {
     return this.prisma.toDo.findUnique({
       where: {
         id
@@ -33,7 +44,7 @@ export class PrismaToDoRepository implements ToDoRepository {
     });
   }
 
-  update(toDo: ToDo): Promise<ToDo> {
+  async update(toDo: ToDo): Promise<ToDo> {
     const updatedToDo = this.prisma.toDo.update({
       where: {
         id: toDo.id

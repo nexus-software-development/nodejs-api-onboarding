@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post, Query } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { CreateToDoUseCase } from "@use-cases/example/create/create-todo";
 import { CreateToDoDto } from "./example/dtos/create-todo.dto";
@@ -29,7 +29,7 @@ export class ToDoController {
     status: 200,
     description: "List of all ToDo items."
   })
-  async findAll(): Promise<ToDo[]> {
-    return this.findAllToDosUseCase.execute();
+  async findAll(@Query("text") text?: string): Promise<ToDo[]> {
+    return this.findAllToDosUseCase.execute(text);
   }
 }
