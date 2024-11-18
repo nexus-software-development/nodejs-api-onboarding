@@ -12,8 +12,10 @@
       "double",
       {
         "avoidEscape": true,
-        "allowTemplateLiterals": true
-      }
+          "allowTemplateLiterals": true
+        }
+      ],
+      "linebreak-style": ["error", "unix"]
     ],
     "prettier/prettier": "error",
     "@typescript-eslint/no-explicit-any": "error",
