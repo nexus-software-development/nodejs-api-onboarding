@@ -1,9 +1,9 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { ToDoController } from "./todo.controller";
-import { CreateToDoUseCase } from "@use-cases/example/create/create-todo";
-import { CreateToDoDto } from "./example/dtos/create-todo.dto";
-import { FindAllToDosUseCase } from "@use-cases/example/find-all/find-all-todos.use-case";
-import { MarkAsCompletedUseCase } from "@use-cases/example/mark-as-completed/mark-as-completed.use-case";
+import { ToDoController } from ".";
+import { CreateToDoUseCase } from "@use-cases/todo/create";
+import { FindAllToDosUseCase } from "@use-cases/todo/find-all";
+import { MarkAsCompletedUseCase } from "@use-cases/todo/mark-as-completed";
+import { CreateToDoDto } from "./dtos/create-todo";
 
 describe("ToDoController", () => {
   let controller: ToDoController;
@@ -109,7 +109,7 @@ describe("ToDoController", () => {
   });
 
   it("should mark a ToDo item as completed", async () => {
-    const result = await controller.markAsCompleted(1);
+    const result = await controller.markAsCompleted("1");
 
     expect(result).toEqual({
       id: 1,
@@ -118,6 +118,6 @@ describe("ToDoController", () => {
       createdAt: expect.any(Date),
       updatedAt: expect.any(Date)
     });
-    expect(markAsCompletedUseCase.execute).toHaveBeenCalledWith(1);
+    expect(markAsCompletedUseCase.execute).toHaveBeenCalledWith("1");
   });
 });

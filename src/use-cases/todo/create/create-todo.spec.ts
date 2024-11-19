@@ -1,5 +1,5 @@
 import { ToDoRepository } from "@domain/repositories/todo-repository";
-import { CreateToDoUseCase } from "./create-todo";
+import { CreateToDoUseCase } from ".";
 import { ToDoRepositoryStub } from "@test/stubs/repositories/todo-repository.stub";
 
 describe("CreateToDoUseCase", () => {

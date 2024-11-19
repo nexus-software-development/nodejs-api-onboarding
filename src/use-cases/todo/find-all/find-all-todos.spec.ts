@@ -1,6 +1,6 @@
 import { ToDoRepository } from "@domain/repositories/todo-repository";
 import { ToDoRepositoryStub } from "@test/stubs/repositories/todo-repository.stub";
-import { FindAllToDosUseCase } from "./find-all-todos.use-case";
+import { FindAllToDosUseCase } from ".";
 import { ToDo } from "@domain/entities/todo";
 
 describe("FindAllToDosUseCase", () => {

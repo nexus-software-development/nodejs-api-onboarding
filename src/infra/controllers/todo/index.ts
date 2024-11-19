@@ -8,11 +8,11 @@ import {
   Query
 } from "@nestjs/common";
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { CreateToDoUseCase } from "@use-cases/example/create/create-todo";
-import { CreateToDoDto } from "./example/dtos/create-todo.dto";
+import { CreateToDoUseCase } from "@use-cases/todo/create";
 import { ToDo } from "@domain/entities/todo";
-import { FindAllToDosUseCase } from "@use-cases/example/find-all/find-all-todos.use-case";
-import { MarkAsCompletedUseCase } from "@use-cases/example/mark-as-completed/mark-as-completed.use-case";
+import { FindAllToDosUseCase } from "@use-cases/todo/find-all";
+import { MarkAsCompletedUseCase } from "@use-cases/todo/mark-as-completed";
+import { CreateToDoDto } from "./dtos/create-todo";
 
 @ApiTags("todos")
 @Controller("/todos")

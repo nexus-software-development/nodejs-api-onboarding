@@ -36,10 +36,10 @@ export class PrismaToDoRepository implements ToDoRepository {
     return this.prisma.toDo.findMany();
   }
 
-  async findById(id: number): Promise<ToDo | null> {
+  async findById(id: string): Promise<ToDo | null> {
     return this.prisma.toDo.findUnique({
       where: {
-        id
+        id: parseInt(id, 10)
       }
     });
   }

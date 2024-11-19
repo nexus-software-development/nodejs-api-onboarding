@@ -36,7 +36,7 @@ export class ToDoRepositoryStub implements ToDoRepository {
     ];
   }
 
-  async findById(id: number): Promise<ToDo | null> {
+  async findById(id: string): Promise<ToDo | null> {
     return null;
   }
 
@@ -44,9 +44,9 @@ export class ToDoRepositoryStub implements ToDoRepository {
     return toDo;
   }
 
-  async markAsCompleted(id: number): Promise<ToDo> {
+  async markAsCompleted(id: string): Promise<ToDo> {
     return {
-      id,
+      id: parseInt(id),
       text: "Buy groceries",
       isCompleted: true,
       createdAt: new Date(),

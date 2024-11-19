@@ -11,12 +11,6 @@ import { PrismaToDoRepository } from "@infra/repositories/prisma/prisma-todo-rep
       useClass: PrismaToDoRepository
     }
   ],
-  exports: [
-    Prisma,
-    {
-      provide: ToDoRepository,
-      useClass: PrismaToDoRepository
-    }
-  ]
+  exports: [ToDoRepository]
 })
 export class DatabaseModule {}
