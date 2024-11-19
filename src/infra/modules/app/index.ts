@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { ToDoModule } from "../example";
+import { ToDoModule } from "../todo";
 
 @Module({
   imports: [ToDoModule]
