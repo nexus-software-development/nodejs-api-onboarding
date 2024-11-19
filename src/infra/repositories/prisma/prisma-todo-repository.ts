@@ -58,4 +58,18 @@ export class PrismaToDoRepository implements ToDoRepository {
 
     return updatedToDo;
   }
+
+  async markAsCompleted(id: string): Promise<ToDo> {
+    const updatedToDo = await this.prisma.toDo.update({
+      where: {
+        id: parseInt(id, 10)
+      },
+      data: {
+        isCompleted: true,
+        updatedAt: new Date()
+      }
+    });
+
+    return updatedToDo;
+  }
 }

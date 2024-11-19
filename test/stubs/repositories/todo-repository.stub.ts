@@ -43,4 +43,14 @@ export class ToDoRepositoryStub implements ToDoRepository {
   async update(toDo: ToDo): Promise<ToDo> {
     return toDo;
   }
+
+  async markAsCompleted(id: number): Promise<ToDo> {
+    return {
+      id,
+      text: "Buy groceries",
+      isCompleted: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+  }
 }

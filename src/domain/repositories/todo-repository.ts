@@ -5,4 +5,5 @@ export abstract class ToDoRepository {
   abstract findAll(filterText?: string): Promise<ToDo[]>;
   abstract findById(id: number): Promise<ToDo | null>;
   abstract update(toDo: ToDo): Promise<ToDo>;
+  abstract markAsCompleted(id: string): Promise<ToDo>;
 }
