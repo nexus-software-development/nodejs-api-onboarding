@@ -6,12 +6,34 @@ export class ToDoRepositoryStub implements ToDoRepository {
     return { ...toDo, id: 1 };
   }
 
-  async findAll(): Promise<ToDo[]> {
-    return [];
-  }
-
-  async findByText(text: string): Promise<ToDo[]> {
-    return [];
+  async findAll(filterText?: string): Promise<ToDo[]> {
+    if (filterText) {
+      return [
+        {
+          id: 1,
+          text: "Buy groceries",
+          isCompleted: false,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        }
+      ];
+    }
+    return [
+      {
+        id: 1,
+        text: "Buy groceries",
+        isCompleted: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: 2,
+        text: "Clean the house",
+        isCompleted: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+    ];
   }
 
   async findById(id: number): Promise<ToDo | null> {

@@ -21,19 +21,19 @@ export class PrismaToDoRepository implements ToDoRepository {
     };
   }
 
-  async findAll(): Promise<ToDo[]> {
-    return this.prisma.toDo.findMany();
-  }
-
-  async findByText(text: string): Promise<ToDo[]> {
-    return this.prisma.toDo.findMany({
-      where: {
-        text: {
-          contains: text,
-          mode: "insensitive"
+  async findAll(filterText?: string): Promise<ToDo[]> {
+    if (filterText) {
+      return this.prisma.toDo.findMany({
+        where: {
+          text: {
+            contains: filterText,
+            mode: "insensitive"
+          }
         }
-      }
-    });
+      });
+    }
+
+    return this.prisma.toDo.findMany();
   }
 
   async findById(id: number): Promise<ToDo | null> {

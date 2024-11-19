@@ -7,10 +7,6 @@ export class FindAllToDosUseCase {
   constructor(private toDoRepository: ToDoRepository) {}
 
   async execute(filterText?: string): Promise<ToDo[]> {
-    if (filterText) {
-      return this.toDoRepository.findByText(filterText);
-    }
-
-    return this.toDoRepository.findAll();
+    return this.toDoRepository.findAll(filterText);
   }
 }

@@ -48,7 +48,7 @@ describe("FindAllToDosUseCase", () => {
       }
     ];
 
-    jest.spyOn(toDoRepository, "findByText").mockResolvedValue(TODOS);
+    jest.spyOn(toDoRepository, "findAll").mockResolvedValue(TODOS);
 
     const result = await sut.execute("Buy groceries");
 
