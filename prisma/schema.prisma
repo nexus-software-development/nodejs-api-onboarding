@@ -14,10 +14,20 @@ datasource db {
 }
 
 model Example {
-  id Int  @id @default(autoincrement())
-  text String
+  id        Int      @id @default(autoincrement())
+  text      String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
 
   @@map("examples")
+}
+
+model ToDo {
+  id          Int      @id @default(autoincrement())
+  text        String
+  isCompleted Boolean  @default(false)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("todos")
 }

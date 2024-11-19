@@ -1,0 +1,9 @@
+@baseUrl = "http://localhost:3001"
+
+# @name create_todo
+POST {{baseUrl}}/todos
+Content-Type: application/json
+
+{
+  "text": "Buy groceries"
+}
