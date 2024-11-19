@@ -1,5 +1,5 @@
 import { ToDoRepository } from "@domain/repositories/todo-repository";
-import { ToDoRepositoryStub } from "@test/stubs/repositories/todo-repository.stub";
+import { ToDoRepositoryStub } from "@test/stubs/repositories/todo";
 import { FindAllToDosUseCase } from ".";
 import { ToDo } from "@domain/entities/todo";
 

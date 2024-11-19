@@ -1,6 +1,6 @@
 import { ToDoRepository } from "@domain/repositories/todo-repository";
 import { CreateToDoUseCase } from ".";
-import { ToDoRepositoryStub } from "@test/stubs/repositories/todo-repository.stub";
+import { ToDoRepositoryStub } from "@test/stubs/repositories/todo";
 
 describe("CreateToDoUseCase", () => {
   let sut: CreateToDoUseCase;

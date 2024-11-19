@@ -1,7 +1,7 @@
 import { MarkAsCompletedUseCase } from ".";
 import { ToDo } from "@domain/entities/todo";
 import { ToDoRepository } from "@domain/repositories/todo-repository";
-import { ToDoRepositoryStub } from "@test/stubs/repositories/todo-repository.stub";
+import { ToDoRepositoryStub } from "@test/stubs/repositories/todo";
 
 describe("MarkAsCompletedUseCase", () => {
   let sut: MarkAsCompletedUseCase;
