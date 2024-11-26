@@ -1,14 +1,5 @@
 import { BaseEntity } from "./base";
 
-type ToDoProps = {
+export interface ToDoEntity extends BaseEntity {
   toDoDescription: string;
-};
-
-export class ToDoEntity extends BaseEntity {
-  toDoDescription: string;
-
-  constructor(toDoProps: ToDoProps) {
-    super();
-    this.toDoDescription = toDoProps.toDoDescription;
-  }
 }
