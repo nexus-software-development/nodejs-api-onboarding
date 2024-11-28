@@ -1,9 +1,9 @@
-import { ITaskRepository } from "@domain/repositories/taskRepository";
+import { TaskRepository } from "@domain/repositories/taskRepository";
 import { Injectable, NotFoundException } from "@nestjs/common";
 
 @Injectable()
 export class CompleteTaskUseCase {
-  constructor(private readonly taskRepository: ITaskRepository) {}
+  constructor(private readonly taskRepository: TaskRepository) {}
 
   async completeTask(id: number): Promise<void> {
     const taskExists = await this.taskRepository.findOne(id);

@@ -1,10 +1,10 @@
 import { TaskEntity } from "@domain/entities/taskEntity";
-import { ITaskRepository } from "@domain/repositories/taskRepository";
+import { TaskRepository } from "@domain/repositories/taskRepository";
 import { Prisma } from "@infra/config/prisma";
 import { Injectable } from "@nestjs/common";
 
 @Injectable()
-export class PrismaTaskRepository implements ITaskRepository {
+export class PrismaTaskRepository implements TaskRepository {
   constructor(private readonly prisma: Prisma) {}
   async findOne(id: number): Promise<TaskEntity> {
     return await this.prisma.task.findUnique({
