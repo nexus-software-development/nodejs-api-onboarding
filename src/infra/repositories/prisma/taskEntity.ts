@@ -6,6 +6,12 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class PrismaTaskRepository implements ITaskRepository {
   constructor(private readonly prisma: Prisma) {}
+  async findOne(id: number): Promise<TaskEntity> {
+    return await this.prisma.task.findUnique({
+      where: { id }
+    });
+  }
+
   async completeTask(id: number): Promise<void> {
     await this.prisma.task.update({
       where: { id },
