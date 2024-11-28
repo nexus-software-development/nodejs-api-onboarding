@@ -1,8 +1,8 @@
 import { applyDecorators } from "@nestjs/common";
 import { ApiCreatedResponse } from "@nestjs/swagger";
 
-export const CreateExampleResponse = applyDecorators(
+export const CreateTaskResponse = applyDecorators(
   ApiCreatedResponse({
-    description: "Exemplo criado com sucesso!"
+    description: "Task criado com sucesso!"
   })
 );

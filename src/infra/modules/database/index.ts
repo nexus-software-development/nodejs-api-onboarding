@@ -1,20 +1,20 @@
-import { PrismaExampleRepository } from "@infra/repositories/prisma/example";
 import { Module } from "@nestjs/common";
-import { ExampleRepository } from "@domain/repositories/example";
 import { Prisma } from "@infra/config/prisma";
+import { PrismaTaskRepository } from "@infra/repositories/prisma/taskEntity";
+import { ITaskRepository } from "@domain/repositories/taskRepository";
 
 @Module({
   providers: [
     Prisma,
     {
-      useClass: PrismaExampleRepository,
-      provide: ExampleRepository
+      useClass: PrismaTaskRepository,
+      provide: ITaskRepository
     }
   ],
   exports: [
     {
-      useClass: PrismaExampleRepository,
-      provide: ExampleRepository
+      useClass: PrismaTaskRepository,
+      provide: ITaskRepository
     }
   ]
 })

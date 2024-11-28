@@ -2,22 +2,22 @@ import { TaskRepositoryStub } from "@test/stubs/repositories/task";
 import { CreateTaskUseCase } from ".";
 import { ITaskRepository } from "@domain/repositories/taskRepository";
 
-describe("Create Example Use Case", () => {
+describe("Create Taks Use Case", () => {
   let sut: CreateTaskUseCase;
-  let exampleRepository: ITaskRepository;
+  let taskRepository: ITaskRepository;
 
   beforeEach(() => {
-    exampleRepository = new TaskRepositoryStub();
-    sut = new CreateTaskUseCase(exampleRepository);
+    taskRepository = new TaskRepositoryStub();
+    sut = new CreateTaskUseCase(taskRepository);
   });
 
-  it("should call a method that create an example", async () => {
-    jest.spyOn(exampleRepository, "create");
+  it("should call a method that create an task", async () => {
+    jest.spyOn(taskRepository, "create");
 
     const TEXT = "text";
 
     await sut.create(TEXT);
 
-    expect(exampleRepository.create).toHaveBeenCalledWith(TEXT);
+    expect(taskRepository.create).toHaveBeenCalledWith(TEXT);
   });
 });

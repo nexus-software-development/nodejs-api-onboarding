@@ -5,21 +5,21 @@ import { TaskEntity } from "@domain/entities/taskEntity";
 
 describe("Find all tasks Use Case", () => {
   let sut: FindAllTasksUseCase;
-  let exampleRepository: ITaskRepository;
+  let taskRepository: ITaskRepository;
 
   beforeEach(() => {
-    exampleRepository = new TaskRepositoryStub();
-    sut = new FindAllTasksUseCase(exampleRepository);
+    taskRepository = new TaskRepositoryStub();
+    sut = new FindAllTasksUseCase(taskRepository);
   });
 
   const task = {
     id: 123,
-    taskDescription: "Texto"
+    task: "Texto"
   } as TaskEntity;
   const tasks = [task, task, task];
 
-  it("should call a method that return a list of examples", async () => {
-    jest.spyOn(exampleRepository, "findAll").mockResolvedValue(tasks);
+  it("should call a method that return a list of tasks", async () => {
+    jest.spyOn(taskRepository, "findAll").mockResolvedValue(tasks);
 
     const result = await sut.findAll();
 
