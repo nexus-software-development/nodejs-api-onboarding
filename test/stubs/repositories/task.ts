@@ -6,6 +6,10 @@ export class TaskRepositoryStub implements ITaskRepository {
     return;
   }
 
+  async completeTask(): Promise<void> {
+    return;
+  }
+
   async findAll(): Promise<TaskEntity[]> {
     return [];
   }

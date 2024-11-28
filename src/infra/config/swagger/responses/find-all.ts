@@ -1,24 +1,25 @@
-import { Example } from "@domain/entities/example";
+import { TaskEntity } from "@domain/entities/taskEntity";
 import { applyDecorators } from "@nestjs/common";
 import { ApiOkResponse, ApiProperty } from "@nestjs/swagger";
 
-const EXAMPLE: Example = {
+const TASK: TaskEntity = {
   id: 1,
-  text: "Texto",
+  task: "Texto",
   createdAt: new Date(),
-  updatedAt: new Date()
+  updatedAt: new Date(),
+  isCompleted: true
 };
 
-export class ExampleReturnDto {
+export class TaskReturnDto {
   @ApiProperty({
-    example: [EXAMPLE, EXAMPLE]
+    example: [TASK, TASK]
   })
-  examples: Example[];
+  tasks: TaskEntity[];
 }
 
-export const FindAllExampleResponses = applyDecorators(
+export const FindAllTasksResponse = applyDecorators(
   ApiOkResponse({
-    description: "Todas os exemplos foram encontrados",
-    type: ExampleReturnDto
+    description: "Todas as tasks foram encontradas",
+    type: TaskReturnDto
   })
 );
