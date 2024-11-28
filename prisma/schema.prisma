@@ -13,11 +13,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Example {
-  id Int  @id @default(autoincrement())
-  text String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+model Task {
+  id          Int      @id @default(autoincrement())
+  task        String
+  isCompleted Boolean  @default(false)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
 
-  @@map("examples")
+  @@map("task")
 }
